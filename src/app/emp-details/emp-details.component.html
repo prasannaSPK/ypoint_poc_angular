@@ -1,0 +1,77 @@
+
+<div class="container" [hidden]="submitted">
+    
+  <form (ngSubmit)= "onSubmit()" class="form-style-9"  [formGroup]="employeeForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required formControlName="name" >
+    </div>
+    
+    
+
+    <!-- <div class="form-group">
+      <label for="empid">EmployeeID</label>
+      <input type="text" class="form-control" id="empid" required  formControlName="empid">
+    </div> -->
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" id="gender" required formControlName="gender">
+        <option *ngFor="let g of genders" [value]="g">{{g}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="empage">Employee Age</label>
+      <input type="number" class="form-control" id="empage" required  formControlName="age">
+    </div>
+
+    <div class="form-group">
+      <label for="empsalary">Employee Salary</label>
+      <input type="number" class="form-control" id="empsalary" required  formControlName="salary">
+    </div>
+    <div style="text-align:center">
+      <button type="submit"  class={{btnclass}}  >{{btnname}}</button>
+    </div>
+      
+    
+    
+
+  </form>
+</div>
+
+<div [hidden]="!submitted" class="form-style-9">
+  <h2>You submitted the following:</h2>
+  
+
+    <div class="row">
+      <div class="col-xs-3">Name:</div>
+      <div class="col-xs-9">{{ employeeForm.value.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">EmployeeID: </div>
+      
+      <div class="col-xs-9"><p>{{employeeForm.value.empid }}</p></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">EmployeeGender:</div>
+      <div class="col-xs-9">{{ employeeForm.value.gender }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">EmployeeAge:</div>
+      
+      <div class="col-xs-9">{{ employeeForm.value.age  }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">EmployeeSalary:</div>
+      <div class="col-xs-9">${{ employeeForm.value.salary }}</div>
+    </div>
+    
+    <br>
+    <div style="text-align:center">
+      <button class="btn btn-primary" (click)=afterSubmit()>OK</button>
+    </div>
+    
+ 
+</div>
+
